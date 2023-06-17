@@ -1,24 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import Layout from "./components/layout";
+import Profile from "./components/profile";
+import Filters from "./components/filters";
+import RepoList from "./components/repo-list";
+import Search from "./components/search";
+// import repoData from "./components/repo-data";
+import { useEffect, useState } from "react";
+import { getUser, getRepos } from "./services/users";
+import { useParams } from "react-router-dom";
 
 function App() {
+  const params = useParams();
+  let username = params.user;
+
+  if (!username) {
+    username = "leonidasesteban";
+  }
+
+  const [user, setUSer] = useState({});
+  const [repos, setRepos] = useState([]);
+
+  useEffect(() => {
+    getUser(username).then(({ data, isError }) => {
+      if (isError) {
+        console.log("No hemos encontrado ningun error ");
+        return;
+      }
+      setUSer(data);
+    });
+
+    getRepos(username).then(({ data, isError }) => {
+      if (isError) {
+        console.log("No hemos encontrado ningun error ");
+        return;
+      }
+      setRepos(data);
+    });
+  }, [username]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Profile {...user} />
+      <Filters />
+      <RepoList repoList={repos} />
+      <Search />
+    </Layout>
   );
 }
 
