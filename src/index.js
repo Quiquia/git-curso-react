@@ -7,11 +7,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
-    path: "/git-curso-react",
+    path: "/",
     element: <App />,
   },
   {
-    path: "/git-curso-react:user",
+    path: "/:user",
     element: <App />,
   },
 ]);
