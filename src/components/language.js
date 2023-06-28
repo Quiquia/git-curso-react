@@ -33,7 +33,7 @@ function Language({ name }) {
   const formatedName = name.toLowerCase();
   const color = languages[formatedName]
     ? languages[formatedName].color
-    : "white";
+    : "purple";
 
   return <LanguajeStyled color={color}>{name}</LanguajeStyled>;
 }

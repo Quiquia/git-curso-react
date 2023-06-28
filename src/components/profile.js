@@ -29,6 +29,9 @@ const ProfileStyle = styled.div`
     margin-block-end: 1.5rem;
   }
 
+  .bio {
+    font: var(--body1-regular);
+  }
   .info {
     color: var(--grey-1);
     text-decoration: none;
@@ -36,7 +39,8 @@ const ProfileStyle = styled.div`
     align-items: center;
     column-gap: 0.5rem;
     margin-block: 1rem;
-    font: var(--body1-semi-bold);
+    font: var(--body2-regular);
+    text-transform: capitalize;
   }
   a:hover {
     text-decoration: underline;
@@ -49,6 +53,53 @@ const ProfileStyle = styled.div`
 
     & a {
       border-radius: 0.5rem;
+    }
+  }
+
+  @media screen and (max-width: 414px) {
+    .profile {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+
+      img {
+        margin: 0;
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    .detailProfile {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .buttonProfile {
+      display: flex;
+      flex-direction: column;
+
+      .buttons {
+        order: 0;
+        margin: 0;
+      }
+
+      .infoProfile {
+        order: -1;
+        margin-block: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        p,
+        a {
+          margin: 0;
+        }
+      }
     }
   }
 `;
@@ -69,40 +120,53 @@ function Profile(props) {
   return (
     <ProfileStyle>
       <Icon />
-      <img
-        className="avatar"
-        src={avatar_url}
-        width="278"
-        height="278"
-        alt="People"
-      />
-      <p className="name">{name}</p>
-
-      <p className="username">{login}</p>
-      <div className="buttons">
-        <Button text="Follow" link="#" className="custom" />
-        <Button
-          text="Sponsor"
-          icon={<Icon name="heart" size={24} color="var(--pink)" />}
+      <div className="profile">
+        <img
+          className="avatar"
+          src={avatar_url}
+          width="278"
+          height="278"
+          alt="People"
         />
+        <div className="detailProfile">
+          <p className="name">{name}</p>
+          <p className="username">{login}</p>
+        </div>
       </div>
-      <p className="bio info"> {bio}</p>
-      <p className="follwers info">
-        . {followers} <span>followers</span> .{following} <span>following</span>
-      </p>
-      {/* <p className="stars info ">81</p> */}
-      <p className="location info"> {location}</p>
-      <a className="info" href={blog} target="_blank" rel="noreferrer">
-        . {blog}
-      </a>
-      <a
-        className="info"
-        href={`https://twitter.com/${twitter_username}`}
-        target="_blank"
-        rel="noreferrer"
-      >
-        @{twitter_username}
-      </a>
+
+      <div className="buttonProfile">
+        <div className="buttons">
+          <Button text="Follow" link="#" className="custom" />
+          <Button
+            text="Sponsor"
+            icon={<Icon name="heart" size={24} color="var(--pink)" />}
+          />
+        </div>
+
+        <div className="infoProfile">
+          <p className="bio info"> {bio}</p>
+          <p className="follwers info">
+            <Icon name="user" size={24} color="var(--grey-1)" /> {followers}{" "}
+            <span>followers</span> .{following} <span>following</span>
+          </p>
+          <p className="location info">
+            <Icon name="location" size={24} color="var(--grey-1)" />
+            {location}
+          </p>
+          <a className="info" href={blog} target="_blank" rel="noreferrer">
+            <Icon name="link" size={24} color="var(--grey-1)" /> {blog}
+          </a>
+          <a
+            className="info"
+            href={`https://twitter.com/${twitter_username}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon name="twitter" size={24} color="var(--grey-1)" /> @
+            {twitter_username}
+          </a>
+        </div>
+      </div>
     </ProfileStyle>
   );
 }

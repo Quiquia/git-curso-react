@@ -24,16 +24,40 @@ const GlobalStylesStyled = createGlobalStyle`
 --body2-semi-bold: 600 0.875rem/1.5rem Inter; 
 --caption-regular: 400 0.75rem/1.125rem Inter; 
 --caption-medium: 500 0.75rem/1.125rem Inter; 
+--br-mobile: 414px; 
 }
 
+html{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+*, *::before,
+*::after{
+    box-sizing: inherit;
+}
 
 body{
-    border: 10px solid blue;
+    /* border: 10px solid blue; */
     background:var(--bg);
     color: var(--grey-1);
     font: var(--body1-regular);
+    margin:0;
     
 }
+
+@media screen and (prefers-color-scheme:light){
+
+    :root{
+        --bg: #fffffe;
+        --grey-1:#141414 ;
+        --white: #141414;
+        --buttonBG: #fffffe;
+        --buttonTopic:  rgba(200,255,255,0.2);
+    }
+
+}
+
 `;
 
 export default GlobalStylesStyled;

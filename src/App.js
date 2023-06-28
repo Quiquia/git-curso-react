@@ -7,6 +7,7 @@ import Search from "./components/search";
 import { useEffect, useState } from "react";
 import { getUser, getRepos } from "./services/users";
 import { useParams } from "react-router-dom";
+import Modal from "./modal";
 
 function App() {
   const params = useParams();
@@ -18,6 +19,9 @@ function App() {
 
   const [user, setUSer] = useState({});
   const [repos, setRepos] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [search, setSearch] = useState("");
+  const [filters, setFilters] = useState({});
 
   useEffect(() => {
     getUser(username).then(({ data, isError }) => {
@@ -39,10 +43,16 @@ function App() {
 
   return (
     <Layout>
+      <Modal isActive={modal} setModal={setModal} />
       <Profile {...user} />
-      <Filters />
-      <RepoList repoList={repos} />
-      <Search />
+      <Filters
+        setSearch={setSearch}
+        repoListCount={repos.length}
+        setFilters={setFilters}
+        filters={filters}
+      />
+      <RepoList search={search} repoList={repos} filters={filters} />
+      <Search setModal={setModal} />
     </Layout>
   );
 }

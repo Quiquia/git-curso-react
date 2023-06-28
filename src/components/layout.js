@@ -5,10 +5,17 @@ const LayoutStyled = styled.main`
   max-inline-size: 75rem;
   margin: auto;
   padding-inline: 20px;
+  padding-block: 2.5rem;
+
+  @media screen and (max-width: 414px) {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
 
   @media screen and (min-width: 768px) {
     display: grid;
-    border: 1px solid red;
     grid-template-columns: 278px 1fr;
     grid-template-rows: auto 1fr;
     column-gap: 2rem;

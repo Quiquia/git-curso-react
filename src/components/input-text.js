@@ -10,6 +10,7 @@ const InputTextStyled = styled.input`
   border-radius: 0.5rem;
   border: 1px solid var(--grey-1);
   color: var(--white);
+  flex: 1;
 `;
 
 export default InputTextStyled;

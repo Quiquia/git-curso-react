@@ -30,6 +30,7 @@ const RepoItemStyled = styled.div`
     padding-inline: 0.5rem;
     padding-block: 0.125rem;
     font: var(--caption-regular);
+    height: 22px;
   }
 
   .description {
@@ -67,6 +68,16 @@ const RepoItemStyled = styled.div`
       text-transform: uppercase;
     }
   }
+
+  @media screen and (max-width: 414px) {
+    padding-block: 0;
+    padding-block-end: 2rem;
+
+    .topicList {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
 `;
 
 function RepoItem(props) {
@@ -88,10 +99,13 @@ function RepoItem(props) {
       {props.description ? (
         <p className="description">{props.description}</p>
       ) : null}
+
       {props.topics.length ? (
         <div className="topicList">
           {props.topics.map((item) => (
-            <span className="topicItem">{item}</span>
+            <span className="topicItem" key={item}>
+              {item}
+            </span>
           ))}
         </div>
       ) : null}
