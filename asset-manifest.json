@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/git-curso-react/static/js/main.4357e9c6.js",
+    "main.js": "/git-curso-react/static/js/main.350a1b20.js",
     "static/js/787.9bdc1240.chunk.js": "/git-curso-react/static/js/787.9bdc1240.chunk.js",
     "index.html": "/git-curso-react/index.html",
-    "main.4357e9c6.js.map": "/git-curso-react/static/js/main.4357e9c6.js.map",
+    "main.350a1b20.js.map": "/git-curso-react/static/js/main.350a1b20.js.map",
     "787.9bdc1240.chunk.js.map": "/git-curso-react/static/js/787.9bdc1240.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.4357e9c6.js"
+    "static/js/main.350a1b20.js"
   ]
 }
