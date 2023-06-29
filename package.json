@@ -1,6 +1,5 @@
 {
-  "name": "git-list",
-  "homepage": "https://quiquia.github.io/git-curso-react",
+  "name": "git-curso-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
